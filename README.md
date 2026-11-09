@@ -62,16 +62,16 @@ Dijkstra's algorithm relies on an assumption about the weights. Let's see what h
 Trace Dijkstra's algorithm starting from Node $A$ to find the shortest path to Node $C$.
 
 1. Which node does Dijkstra's algorithm visit first after $A$?
-   > B
+   > C
 
 2. What will Dijkstra's algorithm declare as the shortest path to $C$, and what is its weight?
-   > A -> B -> C, with a weight of -2
+   > A -> C, with a weight of 1
 
 3. Look at the graph manually. What is the *actual* shortest path from $A$ to $C$, and what is its total weight? 
-   > A -> C, with a weight of 5
+   > A -> B -> C, with a weight of -3
 
 4. **The Trap:** Explain exactly *why* Dijkstra's algorithm failed to find the correct shortest path in this scenario.
-   > It fells to find the correct shortest path as it protizes the minium wieght instead of the shortest path
+   > It checks the goal node early and thus gives it no reason to explore any other posible soultion as it doesnt account the score might go down. This current image doesnt show the problem as the route it takes already contains the negative number.
 
 ---
 
