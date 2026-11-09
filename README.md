@@ -15,13 +15,13 @@ BFS is excellent for finding the shortest path in an unweighted graph. Let's see
 
 **Questions:**
 1. If you run a standard BFS starting at Node $A$, looking for Node $D$, which path will the BFS algorithm discover first? Why?
-   > *Your answer here*
+   > A -> D, because it checks its neigbors, B and D first and D is the goal
 
 2. What is the total weight of the path BFS found? What is the total weight of the alternative path? 
-   > *Your answer here*
+   > The weight of the path found from BFS is 100. The alternative path is 9.
 
 3. How does the definition of "shortest path" change when moving from unweighted graphs to weighted graphs?
-   > *Your answer here*
+   > The defition of shortest path changes from the fewest amount of nodes to the smallest amount of weight.
 
 ---
 
@@ -41,14 +41,14 @@ Starting at Node $A$, trace Dijkstra's algorithm. Fill in the tracker table belo
 | Step | Current Node | Neighbors to Check | `dist` Map | `visited` Set | 
 | :--- | :--- | :--- | :--- | :--- | 
 | 0 | $A$ | $B$, $C$ | $A$:0, $B$:4, $C$:2 | { } | 
-| 1 | | | | | 
-| 2 | | | | | 
-| 3 | | | | | 
-| 4 | | | | | 
+| 1 | $C$ | $B$, $D$, $E$| $A$:0, $B$:3, $C$:2, $D$:10, $E$:12 | {$A$ } | 
+| 2 | $B$ | $D$, $E$ | $A$:0, $B$:3, $C$:2, $D$:8, $E$:12 | {$A$, $C$} | 
+| 3 | $D$ | $E$ | $A$:0, $B$:4, $C$:2, $D$:8, $E$:10 | {$A$, $C$, $B$} | 
+| 4 | $E$ | | $A$:0, $B$:4, $C$:2, $D$:8, $E$:10 | {$A$, $C$, $B$, $D$} | 
 
 **Conceptual Question:**
 When we add a vertex to the "visited" set, why are we 100% certain we have found the absolute shortest path to that node? 
-> *Your answer here*
+> We are 100% certain that a visted node is the shortest path as we view every option that can get there so no new node can show us new infomation to that node.
 
 ---
 
@@ -62,16 +62,16 @@ Dijkstra's algorithm relies on an assumption about the weights. Let's see what h
 Trace Dijkstra's algorithm starting from Node $A$ to find the shortest path to Node $C$.
 
 1. Which node does Dijkstra's algorithm visit first after $A$?
-   > *Your answer here*
+   > B
 
 2. What will Dijkstra's algorithm declare as the shortest path to $C$, and what is its weight?
-   > *Your answer here*
+   > A -> B -> C, with a weight of -2
 
 3. Look at the graph manually. What is the *actual* shortest path from $A$ to $C$, and what is its total weight? 
-   > *Your answer here*
+   > A -> C, with a weight of 5
 
 4. **The Trap:** Explain exactly *why* Dijkstra's algorithm failed to find the correct shortest path in this scenario.
-   > *Your answer here*
+   > It fells to find the correct shortest path as it protizes the minium wieght instead of the shortest path
 
 ---
 
@@ -95,8 +95,8 @@ Standard Dijkstra's algorithm only understands *edges* and *edge weights*. It do
 
 1. How should you represent the paths with stairs in your graph so the algorithm never tries to use them?
 
-   > *Your answer here*
+   > Give them a infinity weight, so it will never try and take it.
 
 2. How can you account for the $3$-minute waiting time at busy crosswalk intersections using *only* edge weights? (Hint: Think about how you could modify the weights of edges connecting to that intersection).
 
-   > *Your answer here*
+   > Assuming a "weight" is equal to 1, you can modifiy any intersection by adding a weight of 3 to it to repesent the 3 minuet wait time.
